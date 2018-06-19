@@ -4,7 +4,7 @@
 <ul>
   <% @user.ownerships.each do |ownership| %>
   <li>
-    <%=  ownership.game.title %>
+    <%=  link_to ownership.game.title, ownership.game %>
     <% if @user.id == current_user_id.to_i %>
       <%= form_for ownership, method: 'delete' do |f| %>
       <%= f.hidden_field :ownership_id, value: ownership.id %>
