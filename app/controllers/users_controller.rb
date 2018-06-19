@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @games = Game.all
     @user = find_user
+    @ownership = Ownership.new
   end
 
   def new
