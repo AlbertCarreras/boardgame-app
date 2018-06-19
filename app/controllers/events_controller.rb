@@ -1,10 +1,5 @@
 class EventsController < ApplicationController
 
-  # just stuck this here to put it somewhere
-  # <%= f.input :date_date, as: :date %>
-  # <%= f.input :date_hour, collection: 0..24 %>
-  # <%= f.input :date_min, collection: [0, 15, 30, 45] %>
-
   def index
     @events = Event.all
   end
@@ -15,6 +10,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.date = Time.now
   end
 
   def create
@@ -25,11 +21,13 @@ class EventsController < ApplicationController
   end
 
   def edit
-
+    @event = Event.find(params[:id])
   end
 
   def update
-
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to show
   end
 
   private

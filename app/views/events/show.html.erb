@@ -1,3 +1,6 @@
 <h1><%= @event.title %></h1>
 <p><%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.location %>
 </p>
+<% if @event.host_id == current_user_id.to_i %>
+  <p><%= link_to "Edit Event", edit_event_path %></p>
+<% end %>

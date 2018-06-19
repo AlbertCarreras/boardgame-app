@@ -1,9 +1,11 @@
 <h1>Events</h1>
 
+<p><%= link_to "Create Event", "events/new" %></p>
+
 <ol>
   <% @events.each do |event| %>
   <li>
-    <%= link_to event.title, event %> <br>
+    <%= link_to event.title, event %> | Organizer: <%= event.host.name %><br>
     <%= event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= event.location %>
   </li>
   <% end %>
