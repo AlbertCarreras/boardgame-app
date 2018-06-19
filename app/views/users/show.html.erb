@@ -1,1 +1,13 @@
 <h1><%= @user.name %></h1>
+
+<h3>My Boardgames</h3>
+<ul>
+  <% @user.games.each do |game| %>
+  <li>
+    <%=  game.title %>
+  </li>
+  <% end %>
+</ul>
+
+<p>Add Boardgame</p>
+<%= form_for  %>

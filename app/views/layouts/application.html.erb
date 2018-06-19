@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    You're logged as: <%= user_name %> | <%= link_to "Home", '/' %> | <%= link_to "Events", '/events' %> | <%= link_to "Board Games", '/games' %> | <%= link_to "Users", '/users' %>
+    <h1>Alberto and Greg's Amazing Board Game Site</h1>
+    <p>You're logged as: <%= user_name %> | <%= link_to "Home", '/' %> | <%= link_to "Events", :events %> | <%= link_to "Board Games", :games %> | <%= link_to "Users", :users %></p>
     <%= yield %>
   </body>
 </html>

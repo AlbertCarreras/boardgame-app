@@ -1,0 +1,7 @@
+<h1>New Board Game</h1>
+
+<%= form_for @game do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.submit "Create game" %>
+<% end %>

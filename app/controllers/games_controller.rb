@@ -9,11 +9,12 @@ class GamesController < ApplicationController
   end
 
   def new
-
+    @game = Game.new
   end
 
   def create
-
+    @game = Game.create(game_params)
+    redirect_to @game
   end
 
   def edit
@@ -29,6 +30,11 @@ class GamesController < ApplicationController
   def find_game
     Game.find(params[:id])
   end
+
+  def game_params
+    params.require(:game).permit(:title)
+  end
+
 
 
 end

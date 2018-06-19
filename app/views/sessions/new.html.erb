@@ -1,4 +1,3 @@
-<h1>Welcome to Alberto and Greg's Amazing Game Site</h1>
 <%= form_for :sessions, controller: "sessions", action: "create" do |f| %>
 <%= f.collection_select :user_id, @users, :id, :name %>
 <%= f.submit %>
