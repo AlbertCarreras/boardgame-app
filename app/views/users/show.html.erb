@@ -22,3 +22,12 @@
   <%= f.submit "Add Game to Collection" %>
   <% end %>
 <% end %>
+
+<h3>My Hosted Events</h3>
+<ul>
+  <% @user.organized_events.each do |organized_event| %>
+  <li>
+    <%=  organized_event.title %>
+  </li>
+  <% end %>
+</ul>
