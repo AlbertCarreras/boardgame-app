@@ -4,12 +4,14 @@
 <h2>All Games</h2>
 <ol>
   <% @games.each do |game| %>
-  <li>
-    <%= link_to game.title, game %>
-    <%= form_for @ownership do |f| %>
-    <%= f.hidden_field :game_id, value: game.id %>
-    <%= f.submit "Add Game to Collection" %>
-    <% end %>
-  </li>
+    <li>
+      <%= link_to game.title, game %>
+      <% if !owned_game?(game.id) %>
+          <%= form_for @ownership do |f| %>
+          <%= f.hidden_field :game_id, value: game.id %>
+          <%= f.submit "Add Game to Collection" %>
+          <% end %>
+      <% end %>
+    </li>
   <% end %>
 </ol>

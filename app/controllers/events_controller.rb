@@ -21,11 +21,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = find_event
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = find_event
     @event.update(event_params)
     redirect_to show
   end

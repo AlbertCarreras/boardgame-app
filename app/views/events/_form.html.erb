@@ -3,6 +3,7 @@
   <%= f.text_field :title %><br>
   <%= f.label :location %>
   <%= f.text_field :location %><br>
+  <%= f.label :date %>
   <%= f.datetime_field(:date, min: Date.today) %>
   <%= f.submit %>
 <% end %>

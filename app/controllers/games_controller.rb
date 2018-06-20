@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  include GameHelper
 
   def index
     @games = Game.all
@@ -23,7 +24,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game = Game.find_game
+    @game = find_game
     @game.update(game_params)
     redirect_to show
   end
@@ -37,7 +38,5 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:title)
   end
-
-
 
 end
