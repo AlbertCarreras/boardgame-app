@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   resources :events
   resources :ownerships
-
+  resources :event_players
 
 end

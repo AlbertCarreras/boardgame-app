@@ -4,3 +4,17 @@
 <% if @event.host_id == current_user_id.to_i %>
   <p><%= link_to "Edit Event", edit_event_path %></p>
 <% end %>
+
+<%= form_for @eventplayer do |f| %>
+  <%= f.hidden_field :event_id, value: @event.id %>
+  <%= f.submit "Register" %>
+<% end %>
+
+<h3>Registered Players</h3>
+<ul>
+  <% player_list_by_player(@event.id).each do |player| %>
+    <li>
+      <%= link_to player.name, user_path(player) %><br>
+    </li>
+  <% end %>
+</ul>

@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include EventPlayerHelper
 
   def index
     @events = Event.all
@@ -6,6 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @event = find_event
+    @eventplayer = EventPlayer.new
   end
 
   def new
@@ -46,7 +48,7 @@ class EventsController < ApplicationController
   def find_hosted_event_ownership_id
     find_hosted_event.id
   end
-  
+
   def find_hosted_event
     Event.find(params[:event][:hosted_event_id])
   end
