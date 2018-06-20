@@ -9,8 +9,13 @@
       <% if !owned_game?(game.id) %>
           <%= form_for @ownership do |f| %>
           <%= f.hidden_field :game_id, value: game.id %>
-          <%= f.submit "Add Game to Collection" %>
+          <%= f.submit "Add to Collection" %>
           <% end %>
+      <% else %>
+        <%= form_for current_ownership(game.id), method: 'delete' do |f| %>
+        <%= f.hidden_field :ownership_id, value: current_ownership(game.id).id %>
+        <%= f.submit "Remove from Collection" %>
+        <% end %>
       <% end %>
     </li>
   <% end %>

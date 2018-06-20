@@ -9,7 +9,7 @@ class OwnershipsController < ApplicationController
 
   def destroy
     find_ownership.delete
-    redirect_to user_path(current_user_id)
+    redirect_back(fallback_location: root_path)
   end
 
   private
