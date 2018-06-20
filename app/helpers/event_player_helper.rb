@@ -20,16 +20,14 @@ module EventPlayerHelper
     player_list_by_player(event_id).count
   end
 
-  def host?
-
-    User.host_events
-
+  def host?(event_id)
+    current_user.hosted_event_ids.include?(event_id)
   end
 
   def show_count_prompt(event_id)
     a = player_list_count(event_id)
     prompt = pluralize(a, 'registered player')
-    if !current_user.hosted_event_ids.include?(event_id)
+    if !host?(event_id)
       if registered?(event_id)
         link_to 'Unregister', event_path(event_id)
       else
