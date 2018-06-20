@@ -34,7 +34,7 @@ class EventsController < ApplicationController
 
   def destroy
     if current_user_hosted_event?
-      find_hosted_event.delete
+      find_hosted_event.destroy
     end
     redirect_back(fallback_location: root_path)
   end

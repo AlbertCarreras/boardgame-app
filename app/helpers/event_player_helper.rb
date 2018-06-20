@@ -20,6 +20,12 @@ module EventPlayerHelper
     player_list_by_player(event_id).count
   end
 
+  def host?
+
+    User.host_events
+
+  end
+
   def show_count_prompt(event_id)
     a = player_list_count(event_id)
     prompt = pluralize(a, 'registered player')
@@ -33,4 +39,5 @@ module EventPlayerHelper
       end
     end
   end
+
 end

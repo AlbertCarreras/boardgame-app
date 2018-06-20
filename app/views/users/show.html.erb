@@ -43,13 +43,15 @@
         <% if same_user?(@user) %>
           <%= form_for hosted_event, method: 'delete' do |f| %>
           <%= f.hidden_field :hosted_event_id, value: hosted_event.id %>
-          <%= f.submit "Remove" %>
+          <%= f.submit "Cancel Event" %>
           <% end %>
+        <%= button_to "Edit", edit_event_path(hosted_event), method: :get %>
         <% end %>
       </li>
     <% end %>
   <% end %>
 </ul>
+
 <h3>Registered to the Upcoming Events</h3>
 <ul>
   <% @user.event_players.each do |event_player| %>
