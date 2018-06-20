@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
   include EventPlayerHelper
 
-  before_action :current_user_id, :require_login
-  skip_before_action :require_login, only: [:index]
+  before_action :current_user_id
 
   def index
     @events = Event.all

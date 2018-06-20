@@ -11,7 +11,12 @@
 
   <body>
     <h1>Board Games with Strangers</h1>
-    <p>You're logged in as: <%= user_name ? user_name : "no one" %> | <%= link_to "Home", '/' %> | <%= link_to "Events", :events %> | <%= link_to "Board Games", :games %> | <%= link_to "Users", :users %> | <%= link_to "Logout", '/logout', method: :post %></p><hr>
-    <%= yield %>
+    <% if logged_in? %>
+      <p>Welcome, <%= user_name %> | <%= link_to "Home", '/' %> | <%= link_to "Events", :events %> | <%= link_to "Board Games", :games %> | <%= link_to "Users", :users %> | <%= link_to "Logout", '/logout', method: :post %></p><hr>
+      <%= yield %>
+    <% else %>
+      <hr>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

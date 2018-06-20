@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :authenticate!
-
   helper SessionHelper
-
   helper_method :user_name, :current_user_id, :current_user
+
+  before_action :authenticate!
 
   def set_user(user_id)
     session[:user_id] = user_id
@@ -25,10 +24,6 @@ class ApplicationController < ActionController::Base
     else
       nil
     end
-  end
-
-  def require_login
-    return head(:forbidden) unless session.include? :user_id
   end
 
   private

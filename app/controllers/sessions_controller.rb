@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
 	skip_before_action :authenticate!, only: [:new, :create]
 
 	def new
-		
+		if helpers.logged_in?
+			redirect_to helpers.logged_in_user
+		end
 	end
 
 	def create
