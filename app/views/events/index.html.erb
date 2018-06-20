@@ -2,12 +2,14 @@
 
 <p><%= link_to "Create Event", "events/new" %></p>
 
-<h2>All Events</h2>
+<h2>All Upcoming Events</h2>
 <ol>
   <% @events.each do |event| %>
-  <li>
-    <%= link_to event.title, event %> | Organizer: <%= link_to event.host.name, user_path(event.host) %><br></a>
-    <%= event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= event.location %>
-  </li>
+    <% if event.date > Time.now %>
+      <li>
+        <%= link_to event.title, event %> | Organizer: <%= link_to event.host.name, user_path(event.host) %><br></a>
+        <%= event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= event.location %>
+      </li>
+    <% end %>
   <% end %>
 </ol>

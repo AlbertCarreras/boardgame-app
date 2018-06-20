@@ -15,19 +15,38 @@
   <% end %>
 </ul>
 
-<% if same_user?(@user) %>
+<!-- <% if same_user?(@user) %>
   <p>Add Boardgame</p>
   <%= form_for @ownership do |f| %>
   <%= f.collection_select :game_id, @games, :id, :title %>
   <%= f.submit "Add Game to Collection" %>
   <% end %>
-<% end %>
+<% end %> -->
 
-<h3>My Hosted Events</h3>
+<h3>My Past Hosted Events</h3>
 <ul>
-  <% @user.organized_events.each do |organized_event| %>
-  <li>
-    <%=  organized_event.title %>
-  </li>
+  <% @user.hosted_events.each do |hosted_event| %>
+    <% if hosted_event.date < Time.now %>
+      <li>
+        <%= link_to hosted_event.title, hosted_event %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3>My Upcoming Hosted Events</h3>
+<ul>
+  <% @user.hosted_events.each do |hosted_event| %>
+    <% if hosted_event.date > Time.now %>
+      <li>
+        <%= link_to hosted_event.title, hosted_event %>
+        <% if same_user?(@user) %>
+          <%= form_for hosted_event, method: 'delete' do |f| %>
+          <%= f.hidden_field :hosted_event_id, value: hosted_event.id %>
+          <%= f.submit "Remove" %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
 </ul>

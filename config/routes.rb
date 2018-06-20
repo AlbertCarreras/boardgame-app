@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :games, only: [:index, :show, :new, :create, :edit, :update]
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
-  resources :events, only: [:index, :show, :new, :create, :edit, :update]
+  resources :events
   resources :ownerships
 
 

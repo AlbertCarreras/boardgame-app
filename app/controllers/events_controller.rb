@@ -30,7 +30,26 @@ class EventsController < ApplicationController
     redirect_to show
   end
 
+  def destroy
+    if current_user_hosted_event?
+      find_hosted_event.delete
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   private
+
+  def current_user_hosted_event?
+    current_user.hosted_event_ids.include?(find_hosted_event_ownership_id)
+  end
+
+  def find_hosted_event_ownership_id
+    find_hosted_event.id
+  end
+  
+  def find_hosted_event
+    Event.find(params[:event][:hosted_event_id])
+  end
 
   def find_event
     Event.find(params[:id])
