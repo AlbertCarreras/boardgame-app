@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
 
+  before_action :current_user_id, :require_login
+  skip_before_action :require_login, only: [:index]
+
   def index
     @events = Event.all
   end
@@ -39,4 +42,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :location, :date)
   end
+
 end

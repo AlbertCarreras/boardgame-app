@@ -1,4 +1,10 @@
 <%= form_for :sessions, controller: "sessions", action: "create" do |f| %>
-<%= f.collection_select :user_id, @users, :id, :name %>
-<%= f.submit %>
+  Username: <%= f.text_field :name %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
 <% end %>
+
+<%# form_for :sessions, controller: "sessions", action: "create" do |f| %>
+<%# f.collection_select :user_id, @users, :id, :name %>
+<%# f.submit %>
+<%# end %>

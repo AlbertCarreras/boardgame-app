@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
   post '/' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
 
   resources :sessions, only: [:new, :create]
   resources :games, only: [:index, :show, :new, :create, :edit, :update]
