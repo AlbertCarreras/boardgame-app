@@ -2,6 +2,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @ownership = Ownership.new
   end
 
   def show
@@ -18,11 +19,13 @@ class GamesController < ApplicationController
   end
 
   def edit
-
+    @game = find_game
   end
 
   def update
-
+    @game = Game.find_game
+    @game.update(game_params)
+    redirect_to show
   end
 
   private

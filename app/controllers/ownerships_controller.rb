@@ -4,7 +4,7 @@ class OwnershipsController < ApplicationController
     a = Ownership.new(ownership_params)
     a.user_id = current_user_id
     a.save
-    redirect_to user_path(current_user_id)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
