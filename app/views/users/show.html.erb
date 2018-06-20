@@ -23,7 +23,7 @@
   <% end %>
 <% end %> -->
 
-<h3>My Past Hosted Events</h3>
+<h3>Past Hosted Events</h3>
 <ul>
   <% @user.hosted_events.each do |hosted_event| %>
     <% if hosted_event.date < Time.now %>
@@ -34,7 +34,7 @@
   <% end %>
 </ul>
 
-<h3>My Upcoming Hosted Events</h3>
+<h3>Upcoming Hosted Events</h3>
 <ul>
   <% @user.hosted_events.each do |hosted_event| %>
     <% if hosted_event.date > Time.now %>
@@ -44,6 +44,22 @@
           <%= form_for hosted_event, method: 'delete' do |f| %>
           <%= f.hidden_field :hosted_event_id, value: hosted_event.id %>
           <%= f.submit "Remove" %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<h3>Registered to the Upcoming Events</h3>
+<ul>
+  <% @user.event_players.each do |event_player| %>
+    <% if event_player.event.date > Time.now %>
+      <li>
+        <%= link_to event_player.event.title, event_player.event %>
+        <% if same_user?(@user) %>
+          <%= form_for event_player, method: 'delete' do |f| %>
+          <%= f.hidden_field :event_player_id, value: event_player.id %>
+          <%= f.submit "Unregister" %>
           <% end %>
         <% end %>
       </li>
