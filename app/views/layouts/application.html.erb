@@ -11,7 +11,7 @@
 
   <body>
     <h1>Board Games with Strangers</h1>
-    <p>You're logged as: <%= link_to user_name, user_path(current_user_id) %> | <%= link_to "Home", '/' %> | <%= link_to "Events", :events %> | <%= link_to "Board Games", :games %> | <%= link_to "Users", :users %></p><hr>
+    <p>You're logged in as: <%= user_name ? user_name : "no one" %> | <%= link_to "Home", '/' %> | <%= link_to "Events", :events %> | <%= link_to "Board Games", :games %> | <%= link_to "Users", :users %> | <%= link_to "Logout", '/logout', method: :post %></p><hr>
     <%= yield %>
   </body>
 </html>

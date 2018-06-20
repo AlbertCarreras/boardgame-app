@@ -1,19 +1,40 @@
 class ApplicationController < ActionController::Base
-  include ApplicationHelper
-  
-  before_action :current_user_id
+  protect_from_forgery with: :exception
+
+  before_action :authenticate!
+
+  helper SessionHelper
+
   helper_method :user_name, :current_user_id, :current_user
+
+  def set_user(user_id)
+    session[:user_id] = user_id
+  end
 
   def current_user
     User.find(current_user_id)
   end
 
   def current_user_id
-    session[:user_id] || User.first.id
+    session[:user_id]
   end
 
   def user_name
-    @user = User.find(current_user_id).name
+    if current_user_id
+      User.find(current_user_id).name
+    else
+      nil
+    end
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
+  end
+
+  private
+
+  def authenticate!
+    redirect_to new_session_url unless helpers.logged_in?
   end
 
 end
