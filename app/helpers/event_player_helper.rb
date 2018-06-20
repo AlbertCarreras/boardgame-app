@@ -29,13 +29,22 @@ module EventPlayerHelper
   def show_count_prompt(event_id)
     a = player_list_count(event_id)
     prompt = pluralize(a, 'registered player')
-    if registered?(event_id)
-      link_to 'Unregister', event_path(event_id)
+    if !current_user.hosted_event_ids.include?(event_id)
+      if registered?(event_id)
+        link_to 'Unregister', event_path(event_id)
+      else
+        if a == 0
+          link_to 'Register now!', event_path(event_id)
+        else
+          link_to "Join #{prompt} now!", event_path(event_id)
+        end
+      end
+
     else
       if a == 0
-        link_to 'Register now!', event_path(event_id)
+        "No players registered yet."
       else
-        link_to "Join #{prompt} now!", event_path(event_id)
+        "#{prompt} players registered!"
       end
     end
   end
