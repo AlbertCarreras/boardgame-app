@@ -1,20 +1,25 @@
 <h1><%= @event.title %></h1>
 <p><%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.location %>
 </p>
-<% if @event.host_id == current_user_id.to_i %>
-  <p><%= link_to "Edit Event", edit_event_path %></p>
-<% end %>
 
-<% if registered?(@event.id) %>
-  <%= form_for current_event_player(@event.id), method: 'delete' do |f| %>
-    <%= f.hidden_field :event_player_id, value: current_event_player_id(@event.id) %>
-    <%= f.submit "Unregister" %>
+<% if  @event.date > Time.now %>
+
+  <% if @event.host_id == current_user_id.to_i %>
+    <p><%= link_to "Edit Event", edit_event_path %></p>
   <% end %>
-<% else %>
-  <%= form_for @eventplayer do |f| %>
-    <%= f.hidden_field :event_id, value: @event.id %>
-    <%= f.submit "Register" %>
+
+  <% if registered?(@event.id) %>
+    <%= form_for current_event_player(@event.id), method: 'delete' do |f| %>
+      <%= f.hidden_field :event_player_id, value: current_event_player_id(@event.id) %>
+      <%= f.submit "Unregister" %>
+    <% end %>
+  <% else %>
+    <%= form_for @eventplayer do |f| %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+      <%= f.submit "Register" %>
+    <% end %>
   <% end %>
+
 <% end %>
 
 <h3>Registered Players</h3>
