@@ -13,7 +13,7 @@
           <% end %>
       <% else %>
         <%= form_for current_ownership(game.id), method: 'delete' do |f| %>
-        <%= f.hidden_field :ownership_id, value: current_ownership(game.id).id %>
+        <%= f.hidden_field :ownership_id, value: current_ownership_id(game.id) %>
         <%= f.submit "Remove from Collection" %>
         <% end %>
       <% end %>

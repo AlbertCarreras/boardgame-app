@@ -8,4 +8,8 @@ module GameHelper
     current_user.ownerships.find_by(game_id: game_id)
   end
 
+  def current_ownership_id(game_id)
+    current_user.ownerships.find_by(game_id: game_id).id
+  end
+
 end

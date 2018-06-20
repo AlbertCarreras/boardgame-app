@@ -5,7 +5,7 @@
   <% @user.ownerships.each do |ownership| %>
   <li>
     <%=  link_to ownership.game.title, ownership.game %>
-    <% if @user.id == current_user_id.to_i %>
+    <% if same_user?(@user) %>
       <%= form_for ownership, method: 'delete' do |f| %>
       <%= f.hidden_field :ownership_id, value: ownership.id %>
       <%= f.submit "Remove" %>
@@ -15,7 +15,7 @@
   <% end %>
 </ul>
 
-<% if @user.id == current_user_id.to_i %>
+<% if same_user?(@user) %>
   <p>Add Boardgame</p>
   <%= form_for @ownership do |f| %>
   <%= f.collection_select :game_id, @games, :id, :title %>

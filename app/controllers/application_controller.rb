@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+  
   before_action :current_user_id
   helper_method :user_name, :current_user_id, :current_user
 
