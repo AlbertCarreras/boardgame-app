@@ -37,8 +37,8 @@
 <h3>Upcoming Hosted Events</h3>
 <div class="ui link list">
   <% @user.hosted_events.each do |hosted_event| %>
-    <div class="flex-container"><i class="right triangle icon centered"></i>
       <% if hosted_event.date > Time.now %>
+        <div class="flex-container"><i class="right triangle icon centered"></i>
           <%= link_to hosted_event.title, hosted_event, :class => "item game-title" %>
           <% if same_user?(@user) %>
             <%= form_for hosted_event, method: 'delete' do |f| %>
@@ -47,8 +47,8 @@
             <% end %>
           <%= button_to "Edit", edit_event_path(hosted_event), method: :get, :class => "ui button"  %>
           <% end %>
+        </div>
       <% end %>
-    </div>
   <% end %>
 </div>
 

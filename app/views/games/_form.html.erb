@@ -1,17 +1,31 @@
-<%= form_for @game do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :description %>
-<%= f.text_area :description %>
-<%= f.label :yearpublished %>
-<%= f.number_field :yearpublished %>
-<%= f.label :minplayers %>
-<%= f.number_field :minplayers %>
-<%= f.label :maxplayers %>
-<%= f.number_field :maxplayers %>
-<%= f.label :age %>
-<%= f.number_field :age %>
-<%= f.label :image %>
-<%= f.text_field :image %>
-<%= f.submit %>
+<%= form_for @game, :html => {:class => "ui form"} do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :yearpublished %>
+    <%= f.number_field :yearpublished %>
+  </div>
+  <div class="field">
+    <%= f.label :minplayers %>
+    <%= f.number_field :minplayers %>
+  </div>
+  <div class="field">
+    <%= f.label :maxplayers %>
+    <%= f.number_field :maxplayers %>
+  </div>
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+  </div>
+  <%= f.submit :class => "ui button" %>
 <% end %>

@@ -1,38 +1,32 @@
 <h2><%= @event.title %></h2>
 <div class="flex-container">
-
   <div class="item game-title">
-    <%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.address %>, <%= @event.city %> (<%= @event.country %>)
-    <p><%= @event.description %></p>
+    <%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.address %>, <%= @event.city %> (<%= @event.country %>) <%= @event.description %>
   </div>
 
   <% if  @event.date > Time.now %>
-
     <% if @event.host_id == current_user_id.to_i %>
-      <p><%= link_to "Edit Event", edit_event_path, :class => "ui button" %></p>
+      <%= link_to "Edit", edit_event_path, :class => "item game-title" %>
     <% end %>
+      <% if !host?(@event.id) %>
+          <% if registered?(@event.id) %>
+            <%= form_for current_event_player(@event.id), method: 'delete' do |f| %>
+              <%= f.hidden_field :event_player_id, value: current_event_player_id(@event.id) %>
+              <%= f.submit "Unregister", :class => "ui button"  %>
+            <% end %>
+          <% else %>
+            <%= form_for @eventplayer do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id %>
+              <%= f.submit "Register", :class => "ui button"  %>
+            <% end %>
 
-    <% if !host?(@event.id) %>
-        <% if registered?(@event.id) %>
-          <%= form_for current_event_player(@event.id), method: 'delete' do |f| %>
-            <%= f.hidden_field :event_player_id, value: current_event_player_id(@event.id) %>
-            <%= f.submit "Unregister", :class => "ui button"  %>
           <% end %>
 
-        <% else %>
-          <%= form_for @eventplayer do |f| %>
-            <%= f.hidden_field :event_id, value: @event.id %>
-            <%= f.submit "Register", :class => "ui button"  %>
-          <% end %>
-
-        <% end %>
-
+      <% end %>
     <% end %>
-
-  <% end %>
-  
 </div>
 
+<br><br>
 <h3>Registered Players</h3>
 <div class="ui link list">
   <% player_list_by_player(@event.id).each do |player| %>

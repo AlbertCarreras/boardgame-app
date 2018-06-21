@@ -12,6 +12,11 @@
   margin: 0px 5px;
 }
 
+.game-details {
+  font-size: 120%;
+  margin: 0px 5px;
+}
+
 .flex-container {
   margin: 5px 0px;
   display: flex;
