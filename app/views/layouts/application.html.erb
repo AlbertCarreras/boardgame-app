@@ -7,16 +7,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <title>Semantic UI CDN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
   </head>
 
   <body>
-    <h1>Board Games with Strangers</h1>
-    <% if logged_in? %>
-      <p>Welcome, <%= user_name %> | <%= link_to "Home", '/' %> | <%= link_to "Events", :events %> | <%= link_to "Board Games", :games %> | <%= link_to "Users", :users %> | <%= link_to "Logout", '/logout', method: :post %></p><hr>
-      <%= yield %>
-    <% else %>
+    <div class="header">
+      <h1>Board Games with Strangers</h1>
+      <% if logged_in? %>
+        <div class="ui secondary  menu">
+            <a class="item" <%= link_to "Events", :events %>></a>
+          <a class="item" <%= link_to "Board Games", :games %>></a>
+          <a class="item" <%= link_to "Users", :users %>></a>
+          <div class="right menu">
+            <a class="item" <%= link_to "Welcome, #{user_name}", '/' %> ></a>
+            <a class="ui item"<%= link_to "Logout", '/logout', method: :post %>></a>
+          </div>
+        </div>
+      <% end %>
       <hr>
+    </div>
+    <div class="main-container">
       <%= yield %>
-    <% end %>
+    </div>
   </body>
 </html>

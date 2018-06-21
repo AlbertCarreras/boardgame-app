@@ -1,8 +1,19 @@
-<%= form_for :user, url: '/users' do |f| %>
-  Username: <%= f.text_field :name %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+<%= form_for :user, url: '/users', :html => {:class => "ui form"} do |f|  %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <%= f.submit "Submit", :class => "ui button" %>
 <% end %>
 
-<p>or <%= link_to "Log in", root_path %></p>
+<div class="text-login">
+  <p>or <%= link_to "Log in", root_path %></p>
+</div>

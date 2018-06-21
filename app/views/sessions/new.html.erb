@@ -1,7 +1,16 @@
-<%= form_for :sessions, controller: "sessions", action: "create" do |f| %>
-  Username: <%= f.text_field :name %>
-  Password: <%= f.password_field :password %>
-  <%= f.submit "Submit" %>
+<h2>Login</h2>
+<%= form_for :sessions, controller: "sessions", action: "create", :html => {:class => "ui form"} do |f|  %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <%= f.submit "Submit", :class => "ui button" %>
 <% end %>
 
-<p>or <%= link_to "Sign up!", new_user_path %></p>
+<div class="text-login">
+  <p>or <%= link_to "Sign up!", new_user_path %></p>
+</div>
