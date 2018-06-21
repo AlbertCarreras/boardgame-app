@@ -1,9 +1,9 @@
-<h1>Users</h1>
+<h2>Users</h2>
 
-<ul>
+<div class="ui link list">
   <% @users.each do |user| %>
-  <li>
-    <%= link_to user.name, user %>
-  </li>
+    <div class="flex-container"><i class="right triangle icon centered"></i>
+      <%= link_to user.name, user, :class => "item game-title" %>
+    </div>
   <% end %>
-</ul>
+</div>

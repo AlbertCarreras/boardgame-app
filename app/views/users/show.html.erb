@@ -1,19 +1,19 @@
-<h1><%= @user.name %></h1>
+<h2><%= @user.name %></h2>
 
 <h3>My Boardgames</h3>
-<ul>
+<div class="ui link list">
   <% @user.ownerships.each do |ownership| %>
-  <li>
-    <%=  link_to ownership.game.title, ownership.game %>
-    <% if same_user?(@user) %>
-      <%= form_for ownership, method: 'delete' do |f| %>
-      <%= f.hidden_field :ownership_id, value: ownership.id %>
-      <%= f.submit "Remove" %>
+    <div class="flex-container"><i class="right triangle icon centered"></i>
+      <%=  link_to ownership.game.title, ownership.game, :class => "item game-title" %>
+      <% if same_user?(@user) %>
+        <%= form_for ownership, method: 'delete' do |f| %>
+        <%= f.hidden_field :ownership_id, value: ownership.id %>
+        <%= f.submit "Remove", :class => "ui button" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </li>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <!-- <% if same_user?(@user) %>
   <p>Add Boardgame</p>
@@ -24,47 +24,47 @@
 <% end %> -->
 
 <h3>Past Hosted Events</h3>
-<ul>
+<div class="ui link list">
   <% @user.hosted_events.each do |hosted_event| %>
-    <% if hosted_event.date < Time.now %>
-      <li>
-        <%= link_to hosted_event.title, hosted_event %>
-      </li>
+      <% if hosted_event.date < Time.now %>
+        <div class="flex-container"><i class="right triangle icon centered"></i>
+          <%= link_to hosted_event.title, hosted_event, :class => "item game-title" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+</div>
 
 <h3>Upcoming Hosted Events</h3>
-<ul>
+<div class="ui link list">
   <% @user.hosted_events.each do |hosted_event| %>
-    <% if hosted_event.date > Time.now %>
-      <li>
-        <%= link_to hosted_event.title, hosted_event %>
-        <% if same_user?(@user) %>
-          <%= form_for hosted_event, method: 'delete' do |f| %>
-          <%= f.hidden_field :hosted_event_id, value: hosted_event.id %>
-          <%= f.submit "Cancel Event" %>
+    <div class="flex-container"><i class="right triangle icon centered"></i>
+      <% if hosted_event.date > Time.now %>
+          <%= link_to hosted_event.title, hosted_event, :class => "item game-title" %>
+          <% if same_user?(@user) %>
+            <%= form_for hosted_event, method: 'delete' do |f| %>
+            <%= f.hidden_field :hosted_event_id, value: hosted_event.id %>
+            <%= f.submit "Cancel Event", :class => "ui button"  %>
+            <% end %>
+          <%= button_to "Edit", edit_event_path(hosted_event), method: :get, :class => "ui button"  %>
           <% end %>
-        <%= button_to "Edit", edit_event_path(hosted_event), method: :get %>
-        <% end %>
-      </li>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <h3>Registered to the Upcoming Events</h3>
-<ul>
+<div class="ui link list">
   <% @user.event_players.each do |event_player| %>
-    <% if event_player.event.date > Time.now %>
-      <li>
-        <%= link_to event_player.event.title, event_player.event %>
-        <% if same_user?(@user) %>
-          <%= form_for event_player, method: 'delete' do |f| %>
-          <%= f.hidden_field :event_player_id, value: event_player.id %>
-          <%= f.submit "Unregister" %>
+      <% if event_player.event.date > Time.now %>
+        <div class="flex-container"><i class="right triangle icon centered"></i>
+          <%= link_to event_player.event.title, event_player.event, :class => "item game-title" %>
+          <% if same_user?(@user) %>
+            <%= form_for event_player, method: 'delete' do |f| %>
+            <%= f.hidden_field :event_player_id, value: event_player.id %>
+            <%= f.submit "Unregister", :class => "ui button"  %>
+            <% end %>
           <% end %>
-        <% end %>
-      </li>
+        </div>
     <% end %>
   <% end %>
-</ul>
+</div>
