@@ -7,8 +7,8 @@
   <% @events.each do |event| %>
     <% if event.date > Time.now %>
       <li>
-        <%= link_to event.title, event %> | Organizer: <%= link_to event.host.name, user_path(event.host) %><br></a>
-        <%= event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= event.location %><br>
+        <%= link_to event.title, event %> | Organizer: <%= link_to event.host.name, user_path(event.host) %><br>
+        <%= event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= event.address %>, <%= event.city %> (, <%= event.country %>)<br>
         <%= show_count_prompt(event.id) %>
       </li><br>
     <% end %>

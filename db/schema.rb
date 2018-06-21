@@ -28,7 +28,10 @@ ActiveRecord::Schema.define(version: 2018_06_20_150311) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.string "location"
+    t.string "description"
+    t.string "address"
+    t.string "city"
+    t.string "country"
     t.datetime "date"
     t.integer "host_id"
     t.datetime "created_at", null: false
@@ -36,7 +39,15 @@ ActiveRecord::Schema.define(version: 2018_06_20_150311) do
   end
 
   create_table "games", force: :cascade do |t|
+    t.integer "objectid"
     t.string "title"
+    t.text "description"
+    t.integer "minplayers"
+    t.integer "maxplayers"
+    t.integer "age"
+    t.integer "yearpublished"
+    t.string "designer"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +61,12 @@ ActiveRecord::Schema.define(version: 2018_06_20_150311) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "bio"
+    t.string "address"
+    t.string "city"
+    t.string "country"
+    t.string "email"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"

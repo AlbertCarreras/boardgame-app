@@ -16,20 +16,14 @@
   </head>
 
   <body>
-    <div class="header">
-        <h1>Board Games with Strangers</h1>
-        <div class="ui secondary  menu">
-            <a class="item" <%= link_to "Events", :events %>></a>
-          <a class="item" <%= link_to "Board Games", :games %>></a>
-          <a class="item" <%= link_to "Users", :users %>></a>
-          <div class="right menu">
-            <a class="item" <%= link_to "Welcome, #{user_name}", '/' %> ></a>
-            <a class="ui item"<%= link_to "Logout", '/logout', method: :post %>></a>
+          <div class="welcome-bar">
+            <%= yield %>
           </div>
-        </div><hr>
-    </div>
-    <div class="main-container">
-      <%= yield %>
-    </div>
+          <div class="welcome-container">
+            <img class="ui fluid image welcome-img" src="https://cdn.thewirecutter.com/wp-content/uploads/2018/03/boardgamesforadults-2x1-7452.jpg">
+            <div class="welcome-text">Board Games with Strangers</div>
+          </div>
+
+
   </body>
 </html>
