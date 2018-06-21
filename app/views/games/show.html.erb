@@ -1,3 +1,14 @@
+<%= link_to "Back", :back %>
+
 <h1><%= @game.title %></h1>
+<p>Description: <%= @game.description %></p>
+<p>Designer: <%= @game.designer %></p>
+<p>Min players: <%= @game.minplayers %></p>
+<p>Max players:<%= @game.maxplayers %></p>
+<p>Age:<%= @game.age %></p>
+<p>Year published<%= @game.yearpublished %></p>
+ <img src="<%= @game.image %>" alt="Game image" height="300">
+
+
 
 <p><%= link_to "Edit", edit_game_path(@game) %></p>

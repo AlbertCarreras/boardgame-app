@@ -1,5 +1,17 @@
 <%= form_for @game do |f| %>
 <%= f.label :title %>
 <%= f.text_field :title %>
+<%= f.label :description %>
+<%= f.text_area :description %>
+<%= f.label :yearpublished %>
+<%= f.number_field :yearpublished %>
+<%= f.label :minplayers %>
+<%= f.number_field :minplayers %>
+<%= f.label :maxplayers %>
+<%= f.number_field :maxplayers %>
+<%= f.label :age %>
+<%= f.number_field :age %>
+<%= f.label :image %>
+<%= f.text_field :image %>
 <%= f.submit %>
 <% end %>

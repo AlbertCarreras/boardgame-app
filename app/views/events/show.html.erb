@@ -1,6 +1,7 @@
 <h1><%= @event.title %></h1>
-<p><%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.location %>
+<p><%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.address %>, <%= @event.city %> (<%= @event.country %>)
 </p>
+<p><%= @event.description %></p>
 
 <% if  @event.date > Time.now %>
 
