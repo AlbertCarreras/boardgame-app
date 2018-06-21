@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'sessions#new'
   post '/' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-
+  get '/analytics' => 'analytics#show'
+  
   resources :events
   resources :ownerships
   resources :sessions, only: [:new, :create]
