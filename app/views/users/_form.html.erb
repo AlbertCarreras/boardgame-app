@@ -1,20 +1,23 @@
-<%= form_for :user, url: '/users', :html => {:class => "ui form flex-container"} do |f|  %>
-  <p>Sign Up</p>
-  <div class="field flex-container">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field flex-container">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field flex-container">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <%= f.submit "Submit", :class => "ui button" %>
-<% end %>
+<div class="flex-container">
 
-<div>
-  <p>or <%= link_to "Log in", root_path %></p>
+  <%= form_for :user, url: '/users', :html => {:class => "ui form flex-container"} do |f|  %>
+    <div class="field flex-container">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field flex-container">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field flex-container">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <%= f.submit "Sign Up", :class => "ui button" %>
+  <% end %>
+
+</div>
+
+<div class="welcome-command">
+  <p>or <%= link_to "Log in", root_path, :class => "item game-title" %></p>
 </div>

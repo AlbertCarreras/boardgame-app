@@ -1,17 +1,22 @@
 <div class="flex-container">
-  <p>Login</p>
+
   <%= form_for :sessions, controller: "sessions", action: "create", :html => {:class => "ui form flex-container"} do |f|  %>
+
     <div class="field flex-container">
       <%= f.label :name %>
       <%= f.text_field :name %>
     </div>
+
     <div class="field flex-container">
       <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
-    <%= f.submit "Submit", :class => "ui button" %>
+
+    <%= f.submit "Log In", :class => "ui button" %>
   <% end %>
-  <div>
-    <p>or <%= link_to "Sign up!", new_user_path %></p>
-  </div>
+
+</div>
+
+<div class="welcome-command">
+  <p>or <%= link_to "Sign up!", new_user_path, :class => "item game-title" %></p>
 </div>
