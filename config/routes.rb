@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   post '/' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+  resources :events
+  resources :ownerships
   resources :sessions, only: [:new, :create]
+  resources :event_players, only: [:create, :show, :destroy]
   resources :games, only: [:index, :show, :new, :create, :edit, :update]
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
-  resources :events
-  resources :ownerships, only: [:index, :show, :new, :create, :edit, :update]
-  resources :event_players, only: [:create, :show, :destroy]
 
 end
