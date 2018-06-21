@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
 	def new
 		if helpers.logged_in?
 			redirect_to helpers.logged_in_user
+		else
+			render layout: 'welcome'
 		end
 	end
 

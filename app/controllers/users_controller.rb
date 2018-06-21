@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    render layout: 'welcome'
   end
 
   def create
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+
   end
 
   private

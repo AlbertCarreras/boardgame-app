@@ -7,12 +7,6 @@
   margin: 50px 50px;
 }
 
-.text-login {
-  font-size: 120%;
-  text-align: center;
-  margin: 50px 0px;
-}
-
 .game-title {
   font-size: 150%;
   margin: 0px 5px;
@@ -21,25 +15,33 @@
 .flex-container {
   margin: 5px 0px;
   display: flex;
+  height: 20px;
 }
 
 .centered {
   padding: 7px 0px;
 }
 
+.welcome-bar {
+  margin-bottom: 20px;
+}
 
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.welcome-container {
+    display: inline;
+    text-align: center;
+}
+
+.welcome-img {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.welcome-text {
+    color: #135589;
+    font-size: 5em;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

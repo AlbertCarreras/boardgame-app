@@ -1,19 +1,20 @@
-<%= form_for :user, url: '/users', :html => {:class => "ui form"} do |f|  %>
-  <div class="field">
+<%= form_for :user, url: '/users', :html => {:class => "ui form flex-container"} do |f|  %>
+  <p>Sign Up</p>
+  <div class="field flex-container">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="field flex-container">
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
-  <div class="field">
+  <div class="field flex-container">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
   <%= f.submit "Submit", :class => "ui button" %>
 <% end %>
 
-<div class="text-login">
+<div>
   <p>or <%= link_to "Log in", root_path %></p>
 </div>
