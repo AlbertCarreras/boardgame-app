@@ -1,15 +1,13 @@
 class AnalyticsController < ApplicationController
 
-	def show
-		@stats = {}
-		@players = {}
-		@owners = {}
+        def show
+        	@stats = {}
 
-		@stats[:total_users] = User.count
-		@stats[:total_events] = Event.select { |e| e.date > Time.now }.count
-		@stats[:total_games] = Game.count
+        	@stats[:total_users] = User.count
+        	@stats[:total_events] = Event.select { |e| e.date > Time.now }.count
+        	@stats[:total_games] = Game.count
 
-		@events = Event.all
+        	@events = Event.all
         @top_player_count = 0
 
         @events.each do |event|
@@ -35,7 +33,6 @@ class AnalyticsController < ApplicationController
 
         @stats[:most_popular_game] = "#{@top_owner_count} gamers collect #{@game_title}"
 
-
-	end
+        end
 
 end

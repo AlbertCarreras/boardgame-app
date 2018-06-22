@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	include AnalyticsHelper
 
 	skip_before_action :authenticate!, only: [:new, :create]
 
