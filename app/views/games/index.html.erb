@@ -2,21 +2,40 @@
 <p><%= link_to "Create Game", "games/new" %></p>
 
 <h2>All Games</h2>
-<div class="ui link list">
+<div class="ui link cards">
+
   <% @games.each do |game| %>
-      <div class="flex-container"><i class="right triangle icon centered"></i>
-      <%= link_to game.title, game, :class => "item game-title" %>
-      <% if !owned_game?(game.id) %>
-          <%= form_for @ownership do |f| %>
-          <%= f.hidden_field :game_id, value: game.id %>
-          <%= f.submit "Add to Collection", :class => "ui button"%>
-          <% end %>
-      <% else %>
-        <%= form_for current_ownership(game.id), method: 'delete' do |f| %>
-        <%= f.hidden_field :ownership_id, value: current_ownership_id(game.id) %>
-        <%= f.submit "Remove from Collection", :class => "ui button" %>
-        <% end %>
-      <% end %>
+
+    <div class="card">
+      <div class="image">
+        <img src= "<%= game.image %>" style="width:290px;height:250px;" >
+      </div>
+      <div class="content">
+        <div class="header"> <%= link_to game.title, game, :class => "item game-title" %> </div>
+        <div class="meta">
+          Year published <%= game.yearpublished %>
+        </div>
+        <div class="description" >
+          <% if !owned_game?(game.id) %>
+              <%= form_for @ownership do |f| %>
+              <%= f.hidden_field :game_id, value: game.id %>
+              <%= f.submit "Add to Collection", :class => "ui button "%>
+              <% end %>
+          <% else %>
+            <%= form_for current_ownership(game.id), method: 'delete' do |f| %>
+            <%= f.hidden_field :ownership_id, value: current_ownership_id(game.id) %>
+            <%= f.submit "Remove from Collection", :class => "ui button" %>
+            <% end %>
+            <% end %>
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          Min players: <%= game.minplayers %> |
+          Max players: <%= game.maxplayers %> |
+          Age: <%= game.age %>
+        </span>
+      </div>
     </div>
   <% end %>
 </div>
