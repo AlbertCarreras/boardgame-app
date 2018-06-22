@@ -1,3 +1,5 @@
+<h3 class="error"><%= @game.errors.full_messages[0] if @game.errors.full_messages.present? %></h3>
+
 <%= form_for @game, :html => {:class => "ui form"} do |f| %>
   <div class="field">
     <%= f.label :title %>

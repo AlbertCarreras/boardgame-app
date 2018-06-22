@@ -19,9 +19,14 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.host_id = current_user_id
-    @event.save
-    redirect_to @event
+    if @event.save
+      @event.host_id = current_user_id
+      @event.save
+      redirect_to @event
+    else
+      render :new
+    end
+
   end
 
   def edit

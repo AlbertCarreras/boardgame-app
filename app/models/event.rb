@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  validates :title, presence: {message: "required"}
+
   belongs_to :host, :class_name => "User"
   # has_many :event_games
   # has_many :games, through: :event_games

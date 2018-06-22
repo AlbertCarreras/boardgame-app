@@ -15,8 +15,13 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(game_params)
+    @game = Game.new(game_params)
+    if @game.save
     redirect_to @game
+    else
+      @game
+      render :new
+    end
   end
 
   def edit

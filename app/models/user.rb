@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  validates :name, presence: {message: "required"}
+  validates :password, presence: {message: "required"}
+  validates :password_confirmation, presence: {message: "required"}
+
   has_many :ownerships
   has_many :games, through: :ownerships
 
@@ -7,4 +11,5 @@ class User < ApplicationRecord
   has_many :events, through: :event_players
 
   has_secure_password
+
 end
