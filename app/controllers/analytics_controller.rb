@@ -9,28 +9,31 @@ class AnalyticsController < ApplicationController
 		@stats[:total_events] = Event.select { |e| e.date > Time.now }.count
 		@stats[:total_games] = Game.count
 
-		EventPlayer.all.each do |player|
-			if @players[player.event_id]
-				@players[player.event_id] = @players[player.event_id] + 1
-			else
-				@players[player.event_id] = 1
-			end
-		end
+		@events = Event.all
+        @top_player_count = 0
 
-		@players.sort_by(&:last)
-		@stats[:most_popular_event] = "#{@players.to_a[0][1]} players at #{Event.find(@players.to_a[0][0]).title}"
+        @events.each do |event|
+            this_player_count = event.players.count
+            if this_player_count > @top_player_count
+                @event_title = event.title
+                @top_player_count = this_player_count
+            end
+        end
 
+        @stats[:most_popular_event] = "#{@top_player_count} players at #{@event_title}"
 
-		Ownership.all.each do |game|
-			if @owners[game.game_id]
-				@owners[game.game_id] = @owners[game.game_id] + 1
-			else
-				@owners[game.game_id] = 1
-			end
-		end
+        @games = Game.all
+        @top_owner_count = 0
 
-		@owners.sort_by(&:last)
-		@stats[:most_popular_game] = "#{@owners.to_a[0][1]} gamers collect #{Game.find(@owners.to_a[0][0]).title}"
+        @games.each do |game|
+            this_owner_count = game.ownerships.count
+            if this_owner_count > @top_owner_count
+                @game_title = game.title
+                @top_owner_count = this_owner_count
+            end
+        end
+
+        @stats[:most_popular_game] = "#{@top_owner_count} gamers collect #{@game_title}"
 
 
 	end
