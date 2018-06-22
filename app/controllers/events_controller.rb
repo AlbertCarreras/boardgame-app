@@ -35,9 +35,10 @@ class EventsController < ApplicationController
   end
 
   def update
+    byebug
     @event = find_event
     @event.update(event_params)
-    redirect_to show
+    redirect_to @event
   end
 
   def destroy
