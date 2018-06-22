@@ -1,3 +1,4 @@
+/* transversal accessors*/
 
 .header {
   margin: 50px 50px;
@@ -9,11 +10,6 @@
 
 .game-title {
   font-size: 150%;
-  margin: 0px 5px;
-}
-
-.game-details {
-  font-size: 120%;
   margin: 0px 5px;
 }
 
@@ -29,9 +25,40 @@
   padding: 7px 0px;
 }
 
+.container-user-menu {
+    margin: 10px;
+}
+
+.error {
+  color: red;
+}
+
+#user-menu {
+  margin-top: 7px;
+  padding: 2px 4px;
+}
+
+/* welcome page accessors*/
+
+.element-welcome-bar {
+    padding: 0px 4px 0px 4px;
+}
+
 .welcome-bar {
   margin: 10px 10px;
   flex-grow:2;
+}
+
+.title-welcome {
+  font-size: 5em;
+}
+
+.subtitle-welcome {
+  font-size: 2em;
+}
+
+.element-row {
+  display: flex;
 }
 
 #welcome-container {
@@ -42,51 +69,7 @@
   height: 600px;
 }
 
-.welcome-command {
-  margin-top: 10px;
-}
-
-.welcome-img {
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-}
-
-.welcome-text {
-    color: #135589;
-    font-size: 100%;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 #element-welcome-bar {
     padding: 0px 4px;
     margin-left: 4px;
-}
-
-#user-menu {
-  margin-top: 7px;
-  padding: 2px 4px;
-}
-
-.container-user-menu {
-    margin: 10px;
-}
-
-.element-welcome-bar {
-    padding: 0px 4px 0px 4px;
-}
-
-.error {
-  color: red;
-}
-
-.title-welcome {
-  font-size: 5em;
-}
-
-.subtitle-welcome {
-  font-size: 2em;
 }

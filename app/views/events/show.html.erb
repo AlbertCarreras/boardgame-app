@@ -1,7 +1,7 @@
 <h2><%= @event.title %></h2>
-<div class="flex-container">
+<div class="element-row">
   <div class="item game-title">
-    <%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.address %>, <%= @event.city %> (<%= @event.country %>) <%= @event.description %>
+   <p><%= @event.date.strftime("%B %-d, %Y at %l:%M %P") %> in <%= @event.address %>, <%= @event.city %> (<%= @event.country %>) <%= @event.description %></p>
   </div>
 
   <% if  @event.date > Time.now %>
@@ -12,12 +12,12 @@
           <% if registered?(@event.id) %>
             <%= form_for current_event_player(@event.id), method: 'delete' do |f| %>
               <%= f.hidden_field :event_player_id, value: current_event_player_id(@event.id) %>
-              <%= f.submit "Unregister", :class => "ui button"  %>
+              <%= f.submit "Unregister", :class => "ui button", :id => "user-menu"  %>
             <% end %>
           <% else %>
             <%= form_for @eventplayer do |f| %>
               <%= f.hidden_field :event_id, value: @event.id %>
-              <%= f.submit "Register", :class => "ui button"  %>
+              <%= f.submit "Register", :class => "ui button", :id => "user-menu"  %>
             <% end %>
 
           <% end %>
