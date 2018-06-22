@@ -18,9 +18,10 @@
 }
 
 .flex-container {
-  margin: 5px 0px;
   display: flex;
   height: 20px;
+  white-space: nowrap;
+  vertical-align: super;
 }
 
 .centered {
@@ -28,7 +29,9 @@
 }
 
 .welcome-bar {
-  margin-bottom: 20px;
+  margin: 10px 10px;
+  float: right;
+  text-align: right;
 }
 
 .welcome-container {
@@ -36,17 +39,30 @@
     text-align: center;
 }
 
+.welcome-command {
+  margin-top: 10px;
+}
+
 .welcome-img {
     opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+    filter: alpha(opacity=50);
 }
 
 .welcome-text {
     color: #135589;
-    font-size: 5em;
+    font-size: 3em;
     font-weight: bold;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#element-welcome-bar {
+    padding: 0px 4px;
+    margin-left: 4px;
+}
+
+.element-welcome-bar {
+    padding: 0px 4px 0px 4px;
 }
