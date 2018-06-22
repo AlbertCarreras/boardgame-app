@@ -21,8 +21,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_user_id
     if @event.save
-      byebug
-      @event.save
       redirect_to @event
     else
       render :new
