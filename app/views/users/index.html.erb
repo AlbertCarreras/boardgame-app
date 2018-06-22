@@ -2,7 +2,7 @@
 
 <div class="ui link list">
   <% @users.each do |user| %>
-    <div class="flex-container"><i class="right triangle icon centered"></i>
+    <div class="flex-container container-user-menu"><i class="right triangle icon centered"></i>
       <%= link_to user.name, user, :class => "item game-title" %>
     </div>
   <% end %>

@@ -63,6 +63,15 @@
     margin-left: 4px;
 }
 
+#user-menu {
+  margin-top: 7px;
+  padding: 2px 4px;
+}
+
+.container-user-menu {
+    margin: 10px;
+}
+
 .element-welcome-bar {
     padding: 0px 4px 0px 4px;
 }
