@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   post '/' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/analytics' => 'analytics#show'
-  
+  get '/signup' => 'users#new'
+
+
   resources :events
   resources :ownerships
   resources :sessions, only: [:new, :create]

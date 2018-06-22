@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       helpers.log_in_user!(@user.id)
       redirect_to :events
     else
-      render :new
+      redirect_to '/signup'
     end
   end
 
