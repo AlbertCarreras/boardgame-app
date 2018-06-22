@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
   validates :title, presence: {message: "required"}
   validates :title, uniqueness: {message: "must be unique"}
-  validates :image, presence: {message: "required"}
+  validates :image, presence: {message: "url required"}
 
   has_many :ownerships
   has_many :users, through: :ownerships
